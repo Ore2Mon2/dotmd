@@ -13,6 +13,10 @@ dotmd は、アウトライン・エディター・プレビューの3画面同�
 - 外部ファイル更新の自動検知
 - 複数インスタンス起動対応
 
+<p align="center">
+  <img src="assets/ScreenShot-Mac.png" width="512" alt="ScreenShot">
+</p>
+
 ---
 ## 主な機能
 
