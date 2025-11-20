@@ -2,7 +2,7 @@
 ## Markdown Editor
 
 <p align="center">
-  <img src="assets/icon-dotmd-arrow.png" width="64" alt="dotmd Icon">
+  <img src="./readme-image/icon-dotmd-arrow.png" width="64" alt="dotmd Icon">
 </p>
 
 ## 概要
@@ -15,7 +15,7 @@ Markdown エディターです。
 - Webコンテンツ取得機能
 
 <p align="center">
-  <img src="assets/ScreenShot-Mac.png" width="512" alt="ScreenShot">
+  <img src="./readme-image/ScreenShot-Mac.png" width="512" alt="ScreenShot">
 </p>
 
 ---
