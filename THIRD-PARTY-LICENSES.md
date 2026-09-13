@@ -2,17 +2,39 @@
 
 This software uses the following third-party libraries and their respective licenses:
 
-## Runtime Dependencies
+## Application Runtime
 
-### Electron Framework
+### Wails v3
 - **License**: MIT License
-- **Copyright**: Electron contributors
-- **URL**: https://github.com/electron/electron
+- **Copyright**: Lea Anthony
+- **URL**: https://github.com/wailsapp/wails
 
-### Editor & UI Components
+### Microsoft Edge WebView2 Runtime (Windows)
+- Windows builds render the UI using the WebView2 Runtime, installed separately by Microsoft's WebView2 bootstrapper during setup (not bundled inside this application).
+- **License**: Subject to the [Microsoft Edge WebView2 Runtime license terms](https://developer.microsoft.com/microsoft-edge/webview2/), not this project's license
+- **URL**: https://developer.microsoft.com/microsoft-edge/webview2/
+
+## Go Backend Dependencies
+
+- **github.com/PuerkitoBio/goquery**: BSD 3-Clause License
+- **github.com/Xuanwo/go-locale**: Apache License 2.0
+- **github.com/fsnotify/fsnotify**: BSD 3-Clause License
+- **github.com/go-ole/go-ole**: MIT License
+- **github.com/andybalholm/cascadia**: BSD 2-Clause License
+- **github.com/adrg/xdg**: MIT License
+- **github.com/godbus/dbus/v5**: BSD 2-Clause License
+- **github.com/coder/websocket**: ISC License
+- **github.com/jchv/go-winloader**: ISC License
+- **github.com/mattn/go-colorable**: MIT License
+- **github.com/mattn/go-isatty**: MIT License
+- **golang.org/x/text**, **golang.org/x/net**, **golang.org/x/sys**: BSD 3-Clause License (The Go Authors)
+
+## Editor & UI Components
+
 - **monaco-editor**: MIT License - Microsoft Corporation
 
-### Markdown Processing
+## Markdown Processing
+
 - **markdown-it**: MIT License - Vitaly Puzrin, Alex Kocharin
 - **markdown-it-anchor**: MIT License
 - **markdown-it-deflist**: MIT License
@@ -24,25 +46,22 @@ This software uses the following third-party libraries and their respective lice
 - **markdown-it-sup**: MIT License
 - **markdown-it-task-lists**: ISC License
 
-### Mathematical & Diagram Rendering
+## HTML Sanitization
+
+- **DOMPurify**: Dual-licensed under Apache License 2.0 and Mozilla Public License 2.0 - Cure53 and contributors
+
+## Mathematical & Diagram Rendering
+
 - **katex**: MIT License - Khan Academy
 - **mermaid**: MIT License - Knut Sveidqvist
 
-### Syntax Highlighting
+## Syntax Highlighting
+
 - **prismjs**: MIT License - Lea Verou
 
-### Text Encoding
-- **encoding-japanese**: MIT License
-- **iconv-lite**: MIT License
+## UI Assets
 
-### UI Assets
 - **@material-design-icons/svg**: MIT License - Google Inc.
-
-## Development Dependencies
-
-### Build Tools
-- **@electron/packager**: MIT License
-- **electron-builder**: MIT License
 
 ---
 
@@ -51,18 +70,13 @@ This software uses the following third-party libraries and their respective lice
 All third-party licenses are compatible with the MIT License used by this project:
 
 - **MIT License**: Same license as main project, fully compatible
+- **BSD 2-Clause / BSD 3-Clause License**: Permissive, fully compatible
 - **ISC License**: Fully compatible, similar permissive terms
-- **Apache License 2.0**: Compatible, requires preservation of notices
+- **Apache License 2.0** (go-locale) **/ Mozilla Public License 2.0** (DOMPurify): Compatible, requires preservation of notices
 
 ## Full License Texts
 
-For complete license texts of each library, please refer to their respective repositories or npm package information using:
+For complete license texts of each library, please refer to their respective repositories or package registries:
 
-```bash
-npm info [package-name] license
-npm info [package-name] repository
-```
-
----
-
-**Note**: This file lists major dependencies. For a complete list of all transitive dependencies and their licenses, run `npm list` in the project directory.
+- Go module licenses: see the module's repository (module paths and versions are listed in `go.mod`)
+- Frontend library licenses (vendored under `frontend/public/lib/` without their own LICENSE file): check the library's npm page or GitHub repository, e.g. `npm info [package-name] license`
