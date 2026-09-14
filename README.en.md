@@ -217,7 +217,7 @@ The full shortcut list is available from the app's menu at [Help] → [Keyboard 
 
 ### config.json (created automatically)
 
-Created automatically on first launch. Restart the app after changing settings.
+Created automatically on first launch.
 
 **Location**:
 - **Windows installer build**:
@@ -225,41 +225,6 @@ Created automatically on first launch. Restart the app after changing settings.
 - **Windows portable build**: same folder as the executable
 - **macOS**: inside the application package
   - config.json location: `~/Library/Application Support/dotmd/`
-
-**Key settings**:
-```json
-{
-  "encoding": "UTF-8(BOM無し)",
-  "lineEnding": "CR+LF",
-  "fonts": {
-    "editor": {
-      "fontFamily": "'Consolas', monospace",
-      "fontSize": "13"
-    },
-    "preview": {
-      "fontFamily": "'Consolas', monospace",
-      "fontSize": "13"
-    }
-  },
-  "deepl": {
-    "useDeepL": false,
-    "apiKey": "",
-    "apiUrl": "https://api-free.deepl.com"
-  },
-  "tavily": {
-    "useTavily": false,
-    "apiKey": "",
-    "apiUrl": "https://api.tavily.com",
-    "maxResults": 10,
-    "searchDepth": "advanced"
-  },
-  "proxy": {
-    "useProxy": false,
-    "httpProxy": "",
-    "httpsProxy": ""
-  }
-}
-```
 
 ---
 ## Setting Up Optional Features

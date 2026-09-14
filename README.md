@@ -217,7 +217,7 @@ Markdown エディターです。
 
 ### config.json(自動作成)
 
-初回起動時に自動的に作成されます。設定を変更したらアプリを再起動して下さい。
+初回起動時に自動的に作成されます。
 
 **保存場所**:
 - **Windows インストーラ版**: 
@@ -225,41 +225,6 @@ Markdown エディターです。
 - **Windows ポータブル版**: 実行ファイルと同じフォルダ
 - **macOS**: アプリケーションパッケージ内
   - 設定ファイル(config.json)保存先: `~/Library/Application Support/dotmd/`
-
-**主な設定項目**:
-```json
-{
-  "encoding": "UTF-8(BOM無し)",
-  "lineEnding": "CR+LF",
-  "fonts": {
-    "editor": {
-      "fontFamily": "'Consolas', monospace",
-      "fontSize": "13"
-    },
-    "preview": {
-      "fontFamily": "'Consolas', monospace",
-      "fontSize": "13"
-    }
-  },
-  "deepl": {
-    "useDeepL": false,
-    "apiKey": "",
-    "apiUrl": "https://api-free.deepl.com"
-  },
-  "tavily": {
-    "useTavily": false,
-    "apiKey": "",
-    "apiUrl": "https://api.tavily.com",
-    "maxResults": 10,
-    "searchDepth": "advanced"
-  },
-  "proxy": {
-    "useProxy": false,
-    "httpProxy": "",
-    "httpsProxy": ""
-  }
-}
-```
 
 ---
 ## オプション機能の設定
