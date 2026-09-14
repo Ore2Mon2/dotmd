@@ -17,6 +17,8 @@ Markdown エディターです。
 - Webコンテンツ取得機能
 - ビジュアルテーブル編集機能(CSV/TSV インポート対応)
 - draw.io 図表作成・編集機能
+- PDF / HTML / Word ファイル出力機能
+- 多言語対応 UI(日本語 / English)
 
 <p align="center">
   <img src="./readme-image/ScreenShot-Mac.png" width="512" alt="ScreenShot">
@@ -53,6 +55,12 @@ Markdown エディターです。
 - **ステータスバー表示**: 現在のファイルの文字コード・改行コードを表示
 - **メニューから選択**: [ファイル] → [文字コード] / [改行コード]
 
+### 📤 ファイル出力(PDF / HTML / Word)
+- **PDF 出力**: [ファイル] → PDFとして保存(Ctrl+P)
+- **HTML 出力**: [ファイル] → HTMLとして保存(Ctrl+H)
+- **Word 出力**: [ファイル] → Wordとして保存(Ctrl+W)
+- Mermaid 図・数式・コードハイライトを含むプレビュー内容をそのまま出力
+
 ### 📥 Webコンテンツ取得
 - **ツールバーボタン**: 地球儀アイコンをクリックして URL 入力ダイアログを表示
 - **コンテンツ取得**: 入力した URL の Web ページからテキストコンテンツを取得
@@ -69,6 +77,10 @@ Markdown エディターです。
 - **図表作成**: フローチャート、UML図、ネットワーク図などを作成
 - **自動保存**: .drawio.svg 形式でファイル保存し、Markdown に参照を挿入
 - **再編集**: プレビュー部の図表をダブルクリックで編集画面を再表示
+
+### 🌍 多言語対応・設定
+- **表示言語**: 日本語 / English を [設定] → [言語] から切り替え可能
+- **外部サービス設定**: [設定] → [外部サービス設定...] で DeepL / Tavily の API キーを設定
 
 ### 🌐 オプション機能(要設定)
 
@@ -177,15 +189,17 @@ Markdown エディターです。
 - `Ctrl+N` - 新規ファイル
 - `Ctrl+O` - ファイルを開く
 - `Ctrl+S` - 保存
-- `Ctrl+W` - ファイルを閉じる
+- `Ctrl+Shift+S` - 名前を付けて保存
+- `Ctrl+P` - PDFとして保存
+- `Ctrl+H` - HTMLとして保存
+- `Ctrl+W` - Wordとして保存
 
 ### 編集操作
 - `Ctrl+I` - Markdown 書式候補ウィンドウ表示
 - `Ctrl+V` - 画像貼り付け(クリップボードに画像がある場合)
-- `Ctrl+F` - 検索
-- `Ctrl+H` - 置換
+- `Ctrl+F` - 検索(エディター部・プレビュー部それぞれにフォーカスがある時)
+- `Ctrl+R` - 置換(エディター部)
 - `F3` - 次を検索
-- `Shift+F3` - 前を検索
 
 ### パネル操作
 - `Ctrl+L` - アウトライン部の開閉
@@ -250,52 +264,32 @@ Markdown エディターです。
 ---
 ## オプション機能の設定
 
+DeepL / Tavily / Proxy の設定は、メニューの [設定] → [外部サービス設定...] から、タブ切り替えでまとめて行えます。
+
 ### DeepL 翻訳機能
 
-1. [DeepL API](https://www.deepl.com/pro-api) でアカウントを作成
-2. API キーを取得(無料プランあり)
-3. config.json を編集:
-   ```json
-   "deepl": {
-     "useDeepL": true,
-     "apiKey": "YOUR_DEEPL_API_KEY",
-     "apiUrl": "https://api-free.deepl.com"
-   }
-   ```
-4. アプリを再起動
-5. テキストを選択して Ctrl+T で翻訳
+1. [DeepL API](https://www.deepl.com/pro-api) でアカウントを作成し、API キーを取得(無料プランあり)
+2. [設定] → [外部サービス設定...] を開き、[DeepL] タブで「有効化」にチェックして API キーを入力
+   - API エンドポイントは無料プランなら既定値(`https://api-free.deepl.com`)のままで OK
+3. アプリを再起動
+4. テキストを選択して Ctrl+T で翻訳
 
 ### Tavily Web 検索機能
 
-1. [Tavily](https://tavily.com/) でアカウントを作成
-2. API キーを取得(無料プランあり)
-3. config.json を編集:
-   ```json
-   "tavily": {
-     "useTavily": true,
-     "apiKey": "YOUR_TAVILY_API_KEY",
-     "apiUrl": "https://api.tavily.com",
-     "maxResults": 10,
-     "searchDepth": "advanced"
-   }
-   ```
-4. アプリを再起動
-5. テキストを選択して Ctrl+Q で検索
+1. [Tavily](https://tavily.com/) でアカウントを作成し、API キーを取得(無料プランあり)
+2. [設定] → [外部サービス設定...] を開き、[Tavily] タブで「有効化」にチェックして API キーを入力
+   - 検索結果件数・検索深度(basic/advanced)・回答生成や本文取得の有無・検索クエリの接頭辞なども同タブで設定可能
+3. アプリを再起動
+4. テキストを選択して Ctrl+Q で検索
 
----
-## プロキシ設定
+### Proxy
 
-企業ネットワーク環境などでプロキシが必要な場合、config.json で設定できます:
+企業ネットワーク環境などで Proxy が必要な場合は、[設定] → [外部サービス設定...] の [Proxy] タブで設定できます。
 
-```json
-"proxy": {
-  "useProxy": true,
-  "httpProxy": "http://proxy.example.com:8080",
-  "httpsProxy": "https://proxy.example.com:8080"
-}
-```
+- 「Proxyを使用する」にチェック
+- 「HTTP Proxy」/「HTTPS Proxy」の接続先を入力(例: `http://proxy.example.com:8080`)
 
-**注意**: プロキシ設定は環境ごとに異なるため、動作保証はできません。
+**注意**: Proxy の設定は環境ごとに異なるため、動作保証はできません。
 
 ---
 ## よくある質問

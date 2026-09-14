@@ -17,6 +17,8 @@ dotmd is a Markdown editor with synchronized three-pane display
 - Web content fetching
 - Visual table editing (with CSV/TSV import)
 - draw.io diagram creation and editing
+- PDF / HTML / Word file export
+- Multi-language UI (Japanese / English)
 
 <p align="center">
   <img src="./readme-image/ScreenShot-Mac.png" width="512" alt="ScreenShot">
@@ -53,6 +55,12 @@ dotmd is a Markdown editor with synchronized three-pane display
 - **Status bar**: shows the current file's encoding and line ending
 - **Menu access**: [File] → [Encoding] / [Line Ending]
 
+### 📤 Export (PDF / HTML / Word)
+- **PDF export**: [File] → Save as PDF (Ctrl+P)
+- **HTML export**: [File] → Save as HTML (Ctrl+H)
+- **Word export**: [File] → Save as Word (Ctrl+W)
+- Exports the preview content as-is, including Mermaid diagrams, math, and code highlighting
+
 ### 📥 Web Content Fetching
 - **Toolbar button**: click the globe icon to open the URL input dialog
 - **Content fetching**: fetches the text content of the page at the given URL
@@ -69,6 +77,10 @@ dotmd is a Markdown editor with synchronized three-pane display
 - **Diagram creation**: create flowcharts, UML diagrams, network diagrams, and more
 - **Auto-save**: saves as `.drawio.svg` and inserts a reference into the Markdown
 - **Re-editing**: double-click a diagram in the preview to reopen the editor
+
+### 🌍 Language and Settings
+- **Display language**: switch between Japanese and English via [Settings] → [Language]
+- **External services**: set your DeepL / Tavily API keys via [Settings] → [External Services Settings...]
 
 ### 🌐 Optional Features (require setup)
 
@@ -177,15 +189,17 @@ dotmd is a Markdown editor with synchronized three-pane display
 - `Ctrl+N` - New File
 - `Ctrl+O` - Open File
 - `Ctrl+S` - Save
-- `Ctrl+W` - Close File
+- `Ctrl+Shift+S` - Save As
+- `Ctrl+P` - Save as PDF
+- `Ctrl+H` - Save as HTML
+- `Ctrl+W` - Save as Word
 
 ### Editing
 - `Ctrl+I` - Show the Markdown syntax picker
 - `Ctrl+V` - Paste image (when the clipboard has an image)
-- `Ctrl+F` - Find
-- `Ctrl+H` - Replace
+- `Ctrl+F` - Find (in the Editor or Preview panel, whichever has focus)
+- `Ctrl+R` - Replace (Editor panel)
 - `F3` - Find Next
-- `Shift+F3` - Find Previous
 
 ### Panels
 - `Ctrl+L` - Toggle the Outline panel
@@ -250,50 +264,30 @@ Created automatically on first launch. Restart the app after changing settings.
 ---
 ## Setting Up Optional Features
 
+DeepL, Tavily, and proxy settings are all configured from [Settings] → [External Services Settings...] via tabs.
+
 ### DeepL Translation
 
-1. Create an account at [DeepL API](https://www.deepl.com/pro-api)
-2. Get an API key (a free plan is available)
-3. Edit config.json:
-   ```json
-   "deepl": {
-     "useDeepL": true,
-     "apiKey": "YOUR_DEEPL_API_KEY",
-     "apiUrl": "https://api-free.deepl.com"
-   }
-   ```
-4. Restart the app
-5. Select text and press Ctrl+T to translate
+1. Create an account at [DeepL API](https://www.deepl.com/pro-api) and get an API key (a free plan is available)
+2. Open [Settings] → [External Services Settings...], go to the [DeepL] tab, check "Enable" and enter your API key
+   - The default API endpoint (`https://api-free.deepl.com`) is fine for the free plan
+3. Restart the app
+4. Select text and press Ctrl+T to translate
 
 ### Tavily Web Search
 
-1. Create an account at [Tavily](https://tavily.com/)
-2. Get an API key (a free plan is available)
-3. Edit config.json:
-   ```json
-   "tavily": {
-     "useTavily": true,
-     "apiKey": "YOUR_TAVILY_API_KEY",
-     "apiUrl": "https://api.tavily.com",
-     "maxResults": 10,
-     "searchDepth": "advanced"
-   }
-   ```
-4. Restart the app
-5. Select text and press Ctrl+Q to search
+1. Create an account at [Tavily](https://tavily.com/) and get an API key (a free plan is available)
+2. Open [Settings] → [External Services Settings...], go to the [Tavily] tab, check "Enable" and enter your API key
+   - The same tab also lets you set the number of results, search depth (basic/advanced), whether to include a generated answer or raw content, and a query prefix
+3. Restart the app
+4. Select text and press Ctrl+Q to search
 
----
-## Proxy Settings
+### Proxy
 
-If you need a proxy (e.g. on a corporate network), configure it in config.json:
+If you need a proxy (e.g. on a corporate network), configure it in the [Proxy] tab of [Settings] → [External Services Settings...].
 
-```json
-"proxy": {
-  "useProxy": true,
-  "httpProxy": "http://proxy.example.com:8080",
-  "httpsProxy": "https://proxy.example.com:8080"
-}
-```
+- Check "Use proxy"
+- Enter your HTTP proxy / HTTPS proxy address (e.g. `http://proxy.example.com:8080`)
 
 **Note**: proxy behavior varies by environment and isn't guaranteed to work everywhere.
 
