@@ -24,10 +24,16 @@ This software uses the following third-party libraries and their respective lice
 - **github.com/adrg/xdg**: MIT License
 - **github.com/godbus/dbus/v5**: BSD 2-Clause License
 - **github.com/coder/websocket**: ISC License
+- **github.com/gomutex/godocx**: MIT License (Word/.docx export)
 - **github.com/jchv/go-winloader**: ISC License
 - **github.com/mattn/go-colorable**: MIT License
 - **github.com/mattn/go-isatty**: MIT License
-- **golang.org/x/text**, **golang.org/x/net**, **golang.org/x/sys**: BSD 3-Clause License (The Go Authors)
+- **github.com/srwiley/oksvg**: BSD 3-Clause License - Steven R Wiley (SVG rasterization fallback for Word export)
+- **github.com/srwiley/rasterx**: BSD 3-Clause License - Steven R Wiley (rasterization engine used by oksvg)
+- **golang.org/x/text**: BSD 3-Clause License (The Go Authors)
+- **golang.org/x/net**: BSD 3-Clause License (The Go Authors)
+- **golang.org/x/sys**: BSD 3-Clause License (The Go Authors)
+- **golang.org/x/image**: BSD 3-Clause License (The Go Authors) (used by oksvg for image decoding)
 
 ## Editor & UI Components
 
