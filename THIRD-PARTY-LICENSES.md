@@ -65,20 +65,14 @@ This software uses the following third-party libraries and their respective lice
 
 - **prismjs**: MIT License - Lea Verou
 
-## UI Assets
-
-- **@material-design-icons/svg**: MIT License - Google Inc.
-
 ---
 
 ## License Compatibility
 
-All third-party licenses are compatible with the MIT License used by this project:
+This project is distributed under a proprietary license (see [LICENSE.md](LICENSE.md)). All third-party components listed above are licensed under permissive open-source licenses that permit their inclusion in proprietary, closed-source, and commercially distributed software, provided the required copyright and license notices are retained (as listed in this document):
 
-- **MIT License**: Same license as main project, fully compatible
-- **BSD 2-Clause / BSD 3-Clause License**: Permissive, fully compatible
-- **ISC License**: Fully compatible, similar permissive terms
-- **Apache License 2.0** (go-locale) **/ Mozilla Public License 2.0** (DOMPurify): Compatible, requires preservation of notices
+- **MIT / BSD 2-Clause / BSD 3-Clause / ISC License**: Permissive, no copyleft or source-disclosure obligations
+- **Apache License 2.0** (go-locale) **/ Mozilla Public License 2.0** (DOMPurify): Permissive, requires preservation of copyright and license notices
 
 ## Full License Texts
 

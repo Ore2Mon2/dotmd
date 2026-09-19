@@ -19,6 +19,8 @@ dotmd is a Markdown editor with synchronized three-pane display
 - draw.io diagram creation and editing
 - PDF / HTML / Word file export
 - Multi-language UI (Japanese / English)
+- Tab mode / Window mode switching (manage multiple files as tabs in one window, or open each in its own window)
+- Code-signed distributions (Windows: code signed / macOS: code signed & notarized)
 
 <p align="center">
   <img src="./readme-image/ScreenShot-Mac.png" width="512" alt="ScreenShot">
@@ -88,37 +90,35 @@ dotmd is a Markdown editor with synchronized three-pane display
 - Select text and press Ctrl+T to translate between Japanese and English
 - In the editor, the translation replaces the selected text
 - In the preview, the translation is shown read-only
-- **Setup**: set your API key in config.json's `deepl` section
 
 #### Tavily Web Search (Ctrl+Q)
 - Select text and press Ctrl+Q to show web search results
 - Click a result's URL to open it in your browser
-- **Setup**: set your API key in config.json's `tavily` section
 
 ---
 ## Supported Platforms
 
-| Platform | Status | Distribution |
-|----------|--------|---------------|
-| **Windows 10/11** | ✅ | Installer / Portable |
-| **macOS (Apple Silicon)** | ✅ | DMG package |
+| Platform | Status | Distribution | Signing |
+|----------|--------|---------------|---------|
+| **Windows 10/11** | ✅ | Installer / Portable | Code signed |
+| **macOS (Apple Silicon)** | ✅ | DMG package | Code signed & notarized |
 
 ### Windows
 
-#### Installer (recommended)
+#### Installer
 - **File name**: `dotmd_{version}_windows_Setup.exe`
 - **Details**:
   - NSIS installer format
   - Creates Desktop / Start Menu shortcuts
   - Config file (config.json) location: `C:\Users\{user}\AppData\Roaming\dotmd\`
-  - Supports automatic updates
+  - Code signed
 
 #### Portable
 - **File name**: `dotmd_{version}_windows_portable.zip`
 - **Details**:
   - No installation needed - just unzip and run
   - Config file lives next to the executable
-  - No automatic updates
+  - Code signed
 
 ### macOS
 
@@ -128,89 +128,9 @@ dotmd is a Markdown editor with synchronized three-pane display
   - DMG installer
   - Config file (config.json) location: `~/Library/Application Support/dotmd/`
   - Install by dragging into the Applications folder
+  - Code signed & notarized (launches without a Gatekeeper warning)
 
   **Note**: Intel Macs are not supported.
-
----
-## Basic Usage
-
-### Opening a file
-- **From the menu**: [File] → [Open File]
-- **Drag and drop**: drop a .md file onto the editor
-- **Double-click**: after associating .md files with dotmd, double-click to launch
-- **Recent files**: [File] → [Recent Files]
-
-### Saving a file
-- **Save**: Ctrl+S (menu: [File] → [Save])
-- **Save As**: [File] → [Save As]
-
-### Entering Markdown syntax
-1. Press Ctrl+I to open the syntax picker
-2. Click the icon for the syntax you want
-
-### Inserting images
-1. Copy an image to the clipboard
-2. Press Ctrl+V in the editor -
-   it's inserted as an HTML `<img>` tag (size and alignment are editable)
-
-### Fetching web content
-1. Click the globe icon (🌐) in the toolbar
-2. Enter a URL in the dialog (e.g. https://example.com)
-3. Click "Fetch"
-4. The fetched content appears in a separate window
-5. Use "Select All and Copy" to copy it to the clipboard
-
-### Editing a table
-1. Place the cursor inside a Markdown table
-2. Click the edit icon (📋) that appears above/below the table
-3. Edit it in the table editor's separate window
-   - Click a cell to enter or change its value
-   - Add/remove rows and columns, change alignment
-   - "Import from File" lets you load a CSV/TSV file
-4. Click "Done" to apply the changes back to the editor
-
-### Creating and editing diagrams
-1. Click the diagram icon in the toolbar
-2. The draw.io editor opens in a separate window
-3. Save it as a `.drawio.svg` file
-   - A reference to the diagram is inserted into the editor
-   - It's rendered in the preview
-4. Click the widget in the editor to reopen and re-edit an existing diagram
-
-### Toggling panels
-- **Outline**: Ctrl+L (or click the title bar)
-- **Editor**: Ctrl+D (or click the title bar)
-- **Preview**: Ctrl+M (or click the title bar)
-
----
-## Keyboard Shortcuts
-
-### File operations
-- `Ctrl+N` - New File
-- `Ctrl+O` - Open File
-- `Ctrl+S` - Save
-- `Ctrl+Shift+S` - Save As
-- `Ctrl+P` - Save as PDF
-- `Ctrl+H` - Save as HTML
-- `Ctrl+W` - Save as Word
-
-### Editing
-- `Ctrl+I` - Show the Markdown syntax picker
-- `Ctrl+V` - Paste image (when the clipboard has an image)
-- `Ctrl+F` - Find (in the Editor or Preview panel, whichever has focus)
-- `Ctrl+R` - Replace (Editor panel)
-- `F3` - Find Next
-
-### Panels
-- `Ctrl+L` - Toggle the Outline panel
-- `Ctrl+D` - Toggle the Editor panel
-- `Ctrl+M` - Toggle the Preview panel
-
-### Optional features (require setup)
-- `Ctrl+T` - DeepL translation (translates the selected text)
-- `Ctrl+Q` - Tavily web search (searches with the selected text)
-
-The full shortcut list is available from the app's menu at [Help] → [Keyboard Shortcuts].
 
 ---
 ## Configuration File
@@ -223,8 +143,7 @@ Created automatically on first launch.
 - **Windows installer build**:
     - config.json location: `C:\Users\{user}\AppData\Roaming\dotmd\`
 - **Windows portable build**: same folder as the executable
-- **macOS**: inside the application package
-  - config.json location: `~/Library/Application Support/dotmd/`
+- **macOS**: `~/Library/Application Support/dotmd/`
 
 ---
 ## Setting Up Optional Features
@@ -236,16 +155,14 @@ DeepL, Tavily, and proxy settings are all configured from [Settings] → [Extern
 1. Create an account at [DeepL API](https://www.deepl.com/pro-api) and get an API key (a free plan is available)
 2. Open [Settings] → [External Services Settings...], go to the [DeepL] tab, check "Enable" and enter your API key
    - The default API endpoint (`https://api-free.deepl.com`) is fine for the free plan
-3. Restart the app
-4. Select text and press Ctrl+T to translate
+3. Select text and press Ctrl+T to translate
 
 ### Tavily Web Search
 
 1. Create an account at [Tavily](https://tavily.com/) and get an API key (a free plan is available)
 2. Open [Settings] → [External Services Settings...], go to the [Tavily] tab, check "Enable" and enter your API key
    - The same tab also lets you set the number of results, search depth (basic/advanced), whether to include a generated answer or raw content, and a query prefix
-3. Restart the app
-4. Select text and press Ctrl+Q to search
+3. Select text and press Ctrl+Q to search
 
 ### Proxy
 
@@ -253,6 +170,7 @@ If you need a proxy (e.g. on a corporate network), configure it in the [Proxy] t
 
 - Check "Use proxy"
 - Enter your HTTP proxy / HTTPS proxy address (e.g. `http://proxy.example.com:8080`)
+- For draw.io diagram editing, **restart the app** for changes to take effect (DeepL / Tavily / web content fetching pick them up as soon as you save)
 
 **Note**: proxy behavior varies by environment and isn't guaranteed to work everywhere.
 
@@ -268,51 +186,27 @@ A: Yes - the core features (editing, preview, saving) work offline. DeepL transl
 ### Q: What does web content fetching actually retrieve?
 A: It extracts the body text of the page, with `<script>` and `<style>` tags removed. Images, video, and other media are not fetched.
 
-### Q: What format are tables saved in?
-A: Standard Markdown table syntax. Tables imported from CSV/TSV are automatically converted to Markdown tables on insertion.
-
 ### Q: Can draw.io diagrams be edited offline?
 A: Creating and editing a diagram requires draw.io's online editor (https://embed.diagrams.net/), so an internet connection is needed for that. Once a `.drawio.svg` file has been created, though, it can still be viewed in the preview offline.
 
 ---
 ## Privacy and Security
 
-dotmd is designed with **user privacy and security as the top priority**.
-
 ### Data handling
 
-- **No unauthorized data collection**
-  - There is no functionality that collects your personal information, editing content, or usage data
-  - There is no telemetry or automatic error reporting
+- **The app connects externally in the following cases**
+  - **Version check**: at startup, it fetches release information from GitHub (to notify you of new versions)
+  - **Web content fetching**: requests to the URL you enter (only when you use that toolbar feature)
+  - **DeepL API**: the text you're translating (only if DeepL is enabled)
+  - **Tavily API**: your search query (only if Tavily is enabled)
+  - **draw.io editor**: diagram data (communicates with https://embed.diagrams.net/ while creating/editing a diagram)
 
-- **No unauthorized outbound communication**
-  - The only data the app sends externally is:
-    - **Web content fetching**: requests to the URL you enter (only when you use that toolbar feature)
-    - **DeepL API**: the text you're translating (only if DeepL is enabled)
-    - **Tavily API**: your search query (only if Tavily is enabled)
-    - **draw.io editor**: diagram data (communicates with https://embed.diagrams.net/ while creating/editing a diagram)
-
-- **All data is stored locally**
-  - Your files, settings, and history are all stored **on your own computer**
-  - Nothing is uploaded to a third-party server
+- Your files, settings, and history are stored **on your own computer**
 
 ### Handling of API keys
 
-- DeepL and Tavily API keys are stored only in your **local config file** (config.json)
-- These credentials are never sent anywhere else
+- DeepL and Tavily API keys are stored in your **local config file** (config.json) and used only to authenticate with each service
 - **Do not share your config.json with anyone**
-
-### Verifying safety yourself
-
-1. **Run a virus scan**
-   - Always scan the download before running it
-   - Use Windows Defender, or a security product of your choice
-
-2. **Firewall / network monitoring**
-   - You can use your firewall or a network monitor to verify what the app communicates with
-   - With the optional features disabled, the app makes **no outbound network connections at all**
-
-**Important**: this application respects your privacy and only makes the minimum necessary API calls when you explicitly enable an optional feature. All data is managed on your own computer. Always run a virus scan after downloading.
 
 ---
 ## Support / Feedback
@@ -322,18 +216,21 @@ dotmd is designed with **user privacy and security as the top priority**.
 ---
 ## License
 
+© 2026 Ore2Mon2. All rights reserved.
+
 - Copyright to dotmd is owned by the developer (Ore2Mon2). You may not copy, modify, reverse engineer, decompile, disassemble, redistribute, rent, lease, or resell this software without the copyright holder's permission.
 - Third-party open-source libraries used internally remain subject to their own respective licenses. See [THIRD-PARTY-LICENSES.md](THIRD-PARTY-LICENSES.md) for details.
 - See [LICENSE.md](LICENSE.md) for the full license text.
+- The full Terms of Service are available at [https://dotmd.oreno.site/](https://dotmd.oreno.site/).
 
 ---
 ## Disclaimer
 
-This software is provided **"AS IS"**, without warranty of any kind, express or implied.
+This software is provided **"AS IS"**, without warranty of any kind, express or implied, including but not limited to warranties of quality, performance, accuracy, fitness for a particular purpose, and non-infringement of third-party rights.
 
 ### Limitation of liability
 
-The developer is not liable for any damages arising from the use of this software, including but not limited to:
+To the maximum extent permitted by law, the developer is not liable for any damages arising from the use of this software, including but not limited to:
 
 - **Data loss or corruption** (lost files, lost edits, etc.)
 - **External API usage charges** (DeepL API, Tavily API fees)
